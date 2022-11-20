@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
         var addButtonScanner = findViewById<Button>(R.id.AddItemScanner)
         addButtonScanner.setOnClickListener {
             var scanoption = ScanOptions()
-            scanoption.setDesiredBarcodeFormats(ScanOptions.UPC_A)
-            scanoption.setDesiredBarcodeFormats(ScanOptions.UPC_E)
+            scanoption.setDesiredBarcodeFormats(ScanOptions.EAN_8,ScanOptions.EAN_13,ScanOptions.UPC_E)
+
 
             scanoption.setOrientationLocked(false)
             barcodeLauncher.launch(scanoption)
