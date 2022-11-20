@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.room.Room
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.journeyapps.barcodescanner.ScanContract
 import com.journeyapps.barcodescanner.ScanIntentResult
@@ -15,6 +16,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        /* val db = Room.databaseBuilder(
+          applicationContext,
+          GameConsoleRoomDatabase::class.java, "GameConsole"
+      ).allowMainThreadQueries().build()*/
         var addButtonScanner = findViewById<Button>(R.id.AddItemScanner)
         addButtonScanner.setOnClickListener {
             var scanoption = ScanOptions()
