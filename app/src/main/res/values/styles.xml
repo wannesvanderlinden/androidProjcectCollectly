@@ -3,8 +3,8 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/design_default_color_primary_variant</item>
-        <item name="colorPrimaryDark">@color/design_default_color_primary_dark</item>
+        <item name="colorPrimary">@color/teal_700</item>
+        <item name="colorPrimaryDark">@color/teal_700</item>
         <item name="colorAccent">@color/design_default_color_on_secondary</item>
     </style>
 
@@ -13,7 +13,9 @@
     <style name="gameConsole_title">
         <item name="android:layout_marginBottom">8dp</item>
         <item name="android:paddingLeft">8dp</item>
-        <item name="android:background">@android:color/holo_orange_light</item>
+        <item name="android:background">@android:color/holo_blue_dark</item>
         <item name="android:textAppearance">@android:style/TextAppearance.Large</item>
+
+
     </style>
 </resources>

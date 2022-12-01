@@ -7,19 +7,47 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.androidprojcectcollectly.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:name="com.example.androidprojcectcollectly.ui.collections.GameConsoleFragment"
+        android:label="@string/title_collections"
+        tools:layout="@layout/fragment_collections" />
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.androidprojcectcollectly.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:name="com.example.androidprojcectcollectly.ui.priceChecker.PriceCheckerFragment"
+        android:label="@string/title_priceCheck"
+        tools:layout="@layout/fragment_pricechecker" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.androidprojcectcollectly.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:name="com.example.androidprojcectcollectly.ui.profile.ProfileFragment"
+        android:label="@string/title_profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/navigation_games"
+        android:name="com.example.androidprojcectcollectly.ui.game.GamesFragment"
+        android:label="@string/title_games"
+        tools:layout="@layout/fragment_games" >
+        <action
+            android:id="@+id/action_navigation_games_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_add_games"
+        android:name="com.example.androidprojcectcollectly.ui.game.AddGameFragment"
+        android:label="@string/title_games"
+        tools:layout="@layout/fragment_add_game" >
+        <action
+            android:id="@+id/action_navigation_add_games_to_navigation_games"
+            app:destination="@id/navigation_games" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_add_gameConsole"
+        android:name="com.example.androidprojcectcollectly.ui.collections.AddGameConsoleFragment"
+        android:label="@string/title_add_gameconsole"
+        tools:layout="@layout/fragment_add_game_console" >
+        <action
+            android:id="@+id/action_navigation_add_gameConsole_to_navigation_home"
+            app:destination="@id/navigation_home" />
+    </fragment>
+
 </navigation>

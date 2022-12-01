@@ -9,5 +9,6 @@
         style="@style/gameConsole_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200" />
+        android:background="@color/teal_200"
+        />
 </LinearLayout>

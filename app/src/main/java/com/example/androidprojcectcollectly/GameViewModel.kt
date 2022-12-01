@@ -14,6 +14,7 @@ class GameViewModel (private val repository: GameRepository): ViewModel()  {
     // - Repository is completely separated from the UI through the ViewModel.
     val allGames: LiveData<List<Game>> = repository.allGames.asLiveData()
 
+
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
