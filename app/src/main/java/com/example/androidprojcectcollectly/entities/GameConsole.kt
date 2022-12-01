@@ -1,4 +1,4 @@
-package com.example.androidprojcectcollectly
+package com.example.androidprojcectcollectly.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

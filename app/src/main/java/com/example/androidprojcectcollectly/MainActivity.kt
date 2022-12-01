@@ -1,37 +1,56 @@
 package com.example.androidprojcectcollectly
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import android.widget.Toast
-import androidx.room.Room
+import androidx.activity.viewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.journeyapps.barcodescanner.ScanContract
-import com.journeyapps.barcodescanner.ScanIntentResult
-import com.journeyapps.barcodescanner.ScanOptions
+import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.androidprojcectcollectly.adapters.GameConsoleListAdapter
+import com.example.androidprojcectcollectly.entities.GameConsole
 
 class MainActivity : AppCompatActivity() {
+    private val newWordActivityRequestCode = 1
+    private var id= 3
+    private val gameConsoleViewModel: GameConsoleViewModel by viewModels{
+        GameConsoleViewModelFactory((application as GameConsolesApplication).repository)
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        /* val db = Room.databaseBuilder(
-          applicationContext,
-          GameConsoleRoomDatabase::class.java, "GameConsole"
-      ).allowMainThreadQueries().build()*/
-        var addButtonScanner = findViewById<Button>(R.id.AddItemScanner)
-        addButtonScanner.setOnClickListener {
-            var scanoption = ScanOptions()
-            scanoption.setDesiredBarcodeFormats(ScanOptions.EAN_8,ScanOptions.EAN_13,ScanOptions.UPC_E)
 
 
-            scanoption.setOrientationLocked(false)
-            barcodeLauncher.launch(scanoption)
-
-
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+        //create the adapter and let some listeners with there attribute
+        val adapter = GameConsoleListAdapter {
+            Toast.makeText(this, it, Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@MainActivity, GameActivity::class.java)
+            intent.putExtra("gameConsole",it)
+            startActivity(intent)
         }
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+
+      gameConsoleViewModel.allGameConsoles.observe(this) { gameConsoles ->
+            // Update the cached copy of the words in the adapter.
+            gameConsoles.let { adapter.submitList(it) }
+        }
+        val fab = findViewById<FloatingActionButton>(R.id.fab)
+        fab.setOnClickListener {
+            val intent = Intent(this@MainActivity, NewMainActivity::class.java)
+            //anders in kotlin
+            startActivityForResult(intent, newWordActivityRequestCode)
+        }
+
+
         var buttomNav = findViewById<BottomNavigationView>(R.id.buttom_nav)
+
+         //
 
         buttomNav.setOnNavigationItemSelectedListener {
 
@@ -51,20 +70,22 @@ class MainActivity : AppCompatActivity() {
             true
         }
     }
-    //zie documentatie https://github.com/journeyapps/zxing-android-embedded
-    private val barcodeLauncher = registerForActivityResult(
-        ScanContract()
-    ) { result: ScanIntentResult ->
-        if (result.contents == null) {
-            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
-            // this.findViewById<TextView>(R.id.resultText).text = result.contents
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, intentData: Intent?) {
+        super.onActivityResult(requestCode, resultCode, intentData)
+
+        if (requestCode == newWordActivityRequestCode && resultCode == Activity.RESULT_OK) {
+            intentData?.getStringExtra(NewMainActivity.EXTRA_REPLY)?.let { reply ->
+                val gameConsole = GameConsole(id,reply)
+                gameConsoleViewModel.insert(gameConsole)
+                id++
+            }
         } else {
             Toast.makeText(
-                this,
-                "Scanned Upc: " + result.contents,
+                applicationContext,
+                R.string.empty_not_saved,
                 Toast.LENGTH_LONG
             ).show()
-            //this.findViewById<TextView>(R.id.resultText).text = result.contents
         }
     }
 

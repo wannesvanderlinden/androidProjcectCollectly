@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">androidProjcectCollectly</string>
+    <string name="hint_gameConsole">GameConsole...</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">GameConsole not saved because it is empty.</string>
+    <string name="add_gameConsole">Add a gameConsole</string>
+    <string name="title_activity_nav">nav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
 </resources>

@@ -1,10 +1,10 @@
-package com.example.androidprojcectcollectly
+package com.example.androidprojcectcollectly.Dao
 
 import androidx.room.Dao
-import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.androidprojcectcollectly.entities.GameConsole
 import kotlinx.coroutines.flow.Flow
 
 
@@ -12,13 +12,13 @@ import kotlinx.coroutines.flow.Flow
 interface GameConsoleDao {
 
     @Query("SELECT * FROM gameconsole ORDER BY name ASC")
-    fun getAlphabetizedWords(): List<GameConsole>
+    fun getAlphabetizedGameConsoles(): Flow<List<GameConsole>>
 
 
 
-    @Delete()
-    fun deleteAll(gameConsole: GameConsole)
+    @Query("DELETE  FROM gameconsole")
+    suspend fun deleteAll()
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insert(gameconsole: GameConsole)
+    suspend fun insert(gameconsole: GameConsole)
 }
