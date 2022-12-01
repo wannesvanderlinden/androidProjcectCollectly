@@ -12,7 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AndroidProjcectCollectly"
-        tools:targetApi="31">
+        tools:targetApi="31"
+       >
         <activity
             android:name=".GameActivity"
             android:exported="false">
@@ -24,6 +25,7 @@
             android:name=".nav"
             android:exported="false"
             android:label="@string/title_activity_nav">
+
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />

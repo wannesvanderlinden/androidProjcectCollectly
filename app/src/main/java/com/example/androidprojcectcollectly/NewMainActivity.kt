@@ -21,14 +21,14 @@ class NewMainActivity : AppCompatActivity() {
             if (TextUtils.isEmpty(editGameConsoleView.text)) {
                 setResult(Activity.RESULT_CANCELED, replyIntent)
             } else {
+
                 val gameConsole = editGameConsoleView.text.toString()
-                replyIntent.putExtra(EXTRA_REPLY, gameConsole)
+
+                replyIntent.putExtra("gameConsole", gameConsole)
                 setResult(Activity.RESULT_OK, replyIntent)
             }
             finish()
         }
     }
-    companion object {
-        const val EXTRA_REPLY = "com.example.android.wordlistsql.REPLY"
-    }
+
 }

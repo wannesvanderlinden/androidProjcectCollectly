@@ -26,8 +26,7 @@ class PricesActivity : AppCompatActivity() {
         }
         var buttomNav = findViewById<BottomNavigationView>(R.id.buttom_nav)
 
-        buttomNav.setOnNavigationItemSelectedListener {
-
+        buttomNav.setOnItemSelectedListener {
             when(it.itemId) {
                 R.id.ic_collections -> {
                     startActivity(Intent(this,MainActivity::class.java))
@@ -43,7 +42,6 @@ class PricesActivity : AppCompatActivity() {
             }
             true
         }
-
     }
     //zie documentatie https://github.com/journeyapps/zxing-android-embedded
     private val barcodeLauncher = registerForActivityResult(

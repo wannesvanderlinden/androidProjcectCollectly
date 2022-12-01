@@ -5,7 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 @Entity
-data class GameConsole(@PrimaryKey  val uid: Int, @ColumnInfo(name = "name") val name: String?) {
+data class GameConsole(@PrimaryKey(autoGenerate = true)  val uid: Int?, @ColumnInfo(name = "name") val name: String?) {
 
 
 }

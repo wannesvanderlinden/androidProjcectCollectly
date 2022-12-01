@@ -6,13 +6,17 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.example.androidprojcectcollectly.Dao.GameConsoleDao
+import com.example.androidprojcectcollectly.Dao.GameDao
+import com.example.androidprojcectcollectly.entities.Game
 import com.example.androidprojcectcollectly.entities.GameConsole
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-@Database(entities = [GameConsole::class], version = 2, exportSchema = false)
+@Database(entities = [GameConsole::class, Game::class], version = 7, exportSchema = false)
  abstract class GameConsoleRoomDatabase : RoomDatabase()  {
     abstract fun gameConsoleDao(): GameConsoleDao
+    abstract fun gameDao(): GameDao
     private class GameConsoleDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
@@ -20,21 +24,27 @@ import kotlinx.coroutines.launch
         override fun onCreate(db: SupportSQLiteDatabase) {
             super.onCreate(db)
             INSTANCE?.let { database ->
-                scope.launch {
+                scope.launch(Dispatchers.IO) {
                     var gameConsoleDao = database.gameConsoleDao()
+                    var gameDao=database.gameDao()
                     // Delete all content here.
                     gameConsoleDao.deleteAll()
 
-                    // Add sample words.
-                    var gameCube = GameConsole(1,"GameCube")
-                    gameConsoleDao.insert(gameCube)
 
-                    var Wii = GameConsole(2,"Wii")
-                    gameConsoleDao.insert(Wii)
+                    var gameCube = GameConsole(null,"GameCube")
+                    gameConsoleDao.insert(gameCube)
+                    var mario_bros= Game(null,"Mario Bros",gameCube.name.toString())
+                    gameDao.insert(mario_bros)
+
+
+                    var wii = GameConsole(null,"Wii")
+                    gameConsoleDao.insert(wii)
+
 
                 }
             }
         }
+
 
 
     }

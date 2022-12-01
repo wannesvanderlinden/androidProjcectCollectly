@@ -1,31 +1,32 @@
 package com.example.androidprojcectcollectly
 
 import androidx.lifecycle.*
+import com.example.androidprojcectcollectly.entities.Game
 import com.example.androidprojcectcollectly.entities.GameConsole
 import com.example.androidprojcectcollectly.repositories.GameConsoleRepository
+import com.example.androidprojcectcollectly.repositories.GameRepository
 import kotlinx.coroutines.launch
 
-class GameConsoleViewModel (private val repository: GameConsoleRepository): ViewModel()  {
+class GameViewModel (private val repository: GameRepository): ViewModel()  {
     // Using LiveData and caching what allWords returns has several benefits:
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
-    val allGameConsoles: LiveData<List<GameConsole>> = repository.allGameConsoles.asLiveData()
+    val allGames: LiveData<List<Game>> = repository.allGames.asLiveData()
 
     /**
      * Launching a new coroutine to insert the data in a non-blocking way
      */
-    fun insert(gameConsole: GameConsole) = viewModelScope.launch {
-
-        repository.insert(gameConsole)
+    fun insert(game: Game) = viewModelScope.launch {
+        repository.insert(game)
     }
 }
 
-class GameConsoleViewModelFactory(private val repository: GameConsoleRepository) : ViewModelProvider.Factory {
+class GameViewModelFactory(private val repository: GameRepository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(GameConsoleViewModel::class.java)) {
+        if (modelClass.isAssignableFrom(GameViewModel::class.java)) {
             @Suppress("UNCHECKED_CAST")
-            return GameConsoleViewModel(repository) as T
+            return GameViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
