@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">androidProjcectCollectly</string>
+    <string name="hint_gameConsole">Wii</string>
+    <string name="button_save">Opslaan</string>
+    <string name="empty_not_saved">GameConsole is niet opgeslaan wegen leegte.</string>
+
+    <string name="add_gameConsole">Voeg een gameConsole toe</string>
+    <string name="title_activity_nav">nav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="hint_game">Mario Bros</string>
+    <!-- Nederlands items -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_games">Games</string>
+    <string name="title_add_game">Voeg Game toe</string>
+    <string name="title_add_gameconsole">Voeg gameconsole toe</string>
+    <string name="title_collections">Collecties</string>
+    <string name="title_priceCheck">Prijzen zoeker</string>
+    <string name="title_profile">Profiel</string>
+
+    <!-- Radio button strings-->
+
+    <string name="title_radioButton">Selecteer de taal</string>
+    <string name="title_taal_english">Engels</string>
+    <string name="Dutch_RadioButton">Nederlands</string>
+</resources>

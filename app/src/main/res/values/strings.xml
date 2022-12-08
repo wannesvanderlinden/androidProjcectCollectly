@@ -10,7 +10,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="hint_game">Mario Bros</string>
-    <!-- TODO: Remove or change this placeholder text -->
+    <!-- Englisch items -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="title_games">Games</string>
     <string name="title_add_game">Add Game</string>
@@ -18,5 +18,10 @@
     <string name="title_collections">Collections</string>
     <string name="title_priceCheck">Price Checker</string>
     <string name="title_profile">Profile</string>
+    <!-- Radio button strings-->
+
+    <string name="title_radioButton">Select language</string>
+    <string name="title_taal_english">English</string>
+    <string name="Dutch_RadioButton">Dutch</string>
 
 </resources>
