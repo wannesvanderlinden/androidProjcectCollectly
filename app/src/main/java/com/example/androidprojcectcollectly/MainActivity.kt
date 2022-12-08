@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         actionBar?.setDisplayShowHomeEnabled(true)
         setContentView(binding.root)
         var checked =
-            this.getSharedPreferences("save", Context.MODE_PRIVATE)?.getBoolean(ProfileFragment().key_isEnabled, false)
+            this.getSharedPreferences("save", Context.MODE_PRIVATE)?.getBoolean(ProfileFragment().KEY_IS_ENABLED, false)
 
         if (checked== true
         ) {

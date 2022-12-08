@@ -1,8 +1,6 @@
 package com.example.androidprojcectcollectly.ui.profile
 
 import android.content.Context
-import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,7 +19,7 @@ class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
     private var isEnabled = false
-    val key_isEnabled = "isEnabled"
+    val KEY_IS_ENABLED = "isEnabled"
 
 
     // This property is only valid between onCreateView and
@@ -47,7 +45,7 @@ class ProfileFragment : Fragment() {
 
        //checking if dark mode was on and change the state of the switch
         if (this.activity?.getSharedPreferences("save", Context.MODE_PRIVATE)
-                ?.getBoolean(key_isEnabled, false) == true
+                ?.getBoolean(KEY_IS_ENABLED, false) == true
         ) {
             darkmodeSwitch.setChecked(true)
         }
@@ -68,7 +66,7 @@ class ProfileFragment : Fragment() {
             //Edit the preference to save the state of the switch and that dark mode is on
             var edit = this.activity?.getSharedPreferences("save", Context.MODE_PRIVATE)?.edit()
 
-            edit?.putBoolean(key_isEnabled, isEnabled)
+            edit?.putBoolean(KEY_IS_ENABLED, isEnabled)
             //Async applying
             edit?.apply()
         })

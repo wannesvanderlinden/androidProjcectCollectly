@@ -5,10 +5,20 @@
     android:layout_height="wrap_content">
 
     <TextView
+       android:layout_marginTop="0px"
+        android:layout_marginBottom="0px"
         android:id="@+id/textView"
         style="@style/gameConsole_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/teal_200"
+
+        android:background="@drawable/border"
+
+
+        android:drawableLeft="@drawable/ic_baseline_videogame_asset_24"
+        android:drawablePadding="100px"
+        android:height="100px"
+
+
         />
 </LinearLayout>
