@@ -1,5 +1,8 @@
 package com.example.androidprojcectcollectly.ui.profile
 
+import android.content.Context
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -17,6 +20,9 @@ import com.example.androidprojcectcollectly.databinding.FragmentProfileBinding
 class ProfileFragment : Fragment() {
 
     private var _binding: FragmentProfileBinding? = null
+    private var isEnabled = false
+    val key_isEnabled = "isEnabled"
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -38,14 +44,33 @@ class ProfileFragment : Fragment() {
 
         //Darkmode switch
         var darkmodeSwitch = binding.darkMode
+
+       //checking if dark mode was on and change the state of the switch
+        if (this.activity?.getSharedPreferences("save", Context.MODE_PRIVATE)
+                ?.getBoolean(key_isEnabled, false) == true
+        ) {
+            darkmodeSwitch.setChecked(true)
+        }
+
+
         //Listener for nightmode
         darkmodeSwitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
-          //Looking when it is checked or not and than change it
-            if(isChecked){
+            //Looking when it is checked or not and than change it
+            if (isChecked) {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            }else{
+
+
+            } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+
             }
+            isEnabled = isChecked
+            //Edit the preference to save the state of the switch and that dark mode is on
+            var edit = this.activity?.getSharedPreferences("save", Context.MODE_PRIVATE)?.edit()
+
+            edit?.putBoolean(key_isEnabled, isEnabled)
+            //Async applying
+            edit?.apply()
         })
 
 
@@ -73,4 +98,5 @@ class ProfileFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
+
 }

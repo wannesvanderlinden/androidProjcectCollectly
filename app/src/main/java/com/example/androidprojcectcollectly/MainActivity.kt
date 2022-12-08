@@ -1,5 +1,6 @@
 package com.example.androidprojcectcollectly
 
+import android.content.Context
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -10,6 +11,7 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.example.androidprojcectcollectly.databinding.ActivityMainBinding
+import com.example.androidprojcectcollectly.ui.profile.ProfileFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +23,13 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         actionBar?.setDisplayShowHomeEnabled(true)
         setContentView(binding.root)
+        var checked =
+            this.getSharedPreferences("save", Context.MODE_PRIVATE)?.getBoolean(ProfileFragment().key_isEnabled, false)
 
+        if (checked== true
+        ) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        }
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_nav)
@@ -35,14 +43,16 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
+
     fun navigate(navigationId: Int) {
 
         findNavController(R.id.nav_host_fragment_activity_nav).navigate(navigationId)
     }
 
     fun navigate(navigationId: Int, bundle: Bundle?) {
-        findNavController(R.id.nav_host_fragment_activity_nav).navigate(navigationId,bundle)
+        findNavController(R.id.nav_host_fragment_activity_nav).navigate(navigationId, bundle)
     }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
