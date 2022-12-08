@@ -48,7 +48,7 @@ class GameConsoleFragment : Fragment() {
         val adapter = GameConsoleListAdapter() {
             val bundle = Bundle()
             bundle.putString("gameConsole",it)
-            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+
             (activity as MainActivity).navigate(R.id.navigation_games,bundle)
 
         }
