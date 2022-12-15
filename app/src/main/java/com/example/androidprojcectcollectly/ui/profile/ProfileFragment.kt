@@ -38,7 +38,7 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
 
 
-        var radio_group = binding.radioGroup
+
 
         //Darkmode switch
         var darkmodeSwitch = binding.darkMode
@@ -72,21 +72,7 @@ class ProfileFragment : Fragment() {
         })
 
 
-        // Get radio group selected item using on checked change listener
-        radio_group.setOnCheckedChangeListener(
-            RadioGroup.OnCheckedChangeListener { group, checkedId ->
 
-                val radio: RadioButton = root.findViewById(checkedId)
-                if (radio.text == "Dutch" || radio.text == "Nederlands") {
-
-
-                }
-                Toast.makeText(
-                    context, " On checked change :" +
-                            " ${radio.text}",
-                    Toast.LENGTH_SHORT
-                ).show()
-            })
 
 
         return root
