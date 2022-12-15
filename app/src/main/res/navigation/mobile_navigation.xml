@@ -13,9 +13,9 @@
 
     <fragment
         android:id="@+id/navigation_dashboard"
-        android:name="com.example.androidprojcectcollectly.ui.priceChecker.PriceCheckerFragment"
+        android:name="com.example.androidprojcectcollectly.ui.steamProfileSearcher.SteamProfileSearcherFragment"
         android:label="@string/title_priceCheck"
-        tools:layout="@layout/fragment_pricechecker" />
+        tools:layout="@layout/fragment_steam_profile_searcher" />
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -51,7 +51,7 @@
     </fragment>
     <fragment
         android:id="@+id/navigation_Steam_Profile"
-        android:name="com.example.androidprojcectcollectly.ui.priceChecker.SteamProfileFragment"
+        android:name="com.example.androidprojcectcollectly.ui.steamProfileSearcher.SteamProfileFragment"
         android:label="SteamProfile"
         tools:layout="@layout/fragment_steam_profile" >
         <action

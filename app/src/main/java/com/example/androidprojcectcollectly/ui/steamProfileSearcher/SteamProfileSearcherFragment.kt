@@ -1,4 +1,4 @@
-package com.example.androidprojcectcollectly.ui.priceChecker
+package com.example.androidprojcectcollectly.ui.steamProfileSearcher
 
 import android.os.Bundle
 import android.text.TextUtils
@@ -6,19 +6,20 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
-import android.widget.TextView
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.androidprojcectcollectly.MainActivity
 import com.example.androidprojcectcollectly.R
 import com.example.androidprojcectcollectly.api.SteamApi
-import com.example.androidprojcectcollectly.databinding.FragmentPricecheckerBinding
+
+import com.example.androidprojcectcollectly.databinding.FragmentSteamProfileBinding
+import com.example.androidprojcectcollectly.databinding.FragmentSteamProfileSearcherBinding
 import com.example.androidprojcectcollectly.models.SteamProfile
 
-class PriceCheckerFragment : Fragment() {
+class SteamProfileSearcherFragment : Fragment() {
 
-    private var _binding: FragmentPricecheckerBinding? = null
+    private var _binding: FragmentSteamProfileSearcherBinding? = null
     private lateinit var searchSteamProfile: EditText
 
     // This property is only valid between onCreateView and
@@ -33,7 +34,7 @@ class PriceCheckerFragment : Fragment() {
         val dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        _binding = FragmentPricecheckerBinding.inflate(inflater, container, false)
+        _binding = FragmentSteamProfileSearcherBinding.inflate(inflater, container, false)
         val root: View = binding.root
         searchSteamProfile = binding.SteamIdField
 

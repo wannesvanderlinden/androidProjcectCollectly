@@ -1,13 +1,10 @@
-package com.example.androidprojcectcollectly.ui.priceChecker
+package com.example.androidprojcectcollectly.ui.steamProfileSearcher
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.androidprojcectcollectly.R
-import com.example.androidprojcectcollectly.databinding.FragmentAddGameBinding
-import com.example.androidprojcectcollectly.databinding.FragmentGamesBinding
 import com.example.androidprojcectcollectly.databinding.FragmentSteamProfileBinding
 import com.squareup.picasso.Picasso
 

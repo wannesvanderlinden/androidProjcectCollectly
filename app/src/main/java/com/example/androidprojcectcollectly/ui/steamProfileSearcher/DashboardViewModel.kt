@@ -1,4 +1,4 @@
-package com.example.androidprojcectcollectly.ui.priceChecker
+package com.example.androidprojcectcollectly.ui.steamProfileSearcher
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
