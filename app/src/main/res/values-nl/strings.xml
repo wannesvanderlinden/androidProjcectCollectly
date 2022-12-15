@@ -25,4 +25,5 @@
     <string name="title_radioButton">Selecteer de taal</string>
     <string name="title_taal_english">Engels</string>
     <string name="Dutch_RadioButton">Nederlands</string>
+    <string name="steamId_hint">SteamID</string>
 </resources>

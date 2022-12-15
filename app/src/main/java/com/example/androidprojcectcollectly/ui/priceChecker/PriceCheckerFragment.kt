@@ -29,10 +29,9 @@ class PriceCheckerFragment : Fragment() {
         val root: View = binding.root
 
 
+        binding.searchButton.setOnClickListener {
+            //Todo send request to api of steam to get game hystory of the profile
 
-        val textView: TextView = binding.textDashboard
-        dashboardViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
         }
         return root
     }

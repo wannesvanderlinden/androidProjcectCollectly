@@ -1,8 +1,7 @@
 package com.example.androidprojcectcollectly.repositories
 
 import androidx.annotation.WorkerThread
-import com.example.androidprojcectcollectly.Dao.GameConsoleDao
-import com.example.androidprojcectcollectly.Dao.GameDao
+import com.example.androidprojcectcollectly.dao.GameDao
 import com.example.androidprojcectcollectly.entities.Game
 
 import kotlinx.coroutines.flow.Flow

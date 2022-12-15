@@ -5,8 +5,8 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.sqlite.db.SupportSQLiteDatabase
-import com.example.androidprojcectcollectly.Dao.GameConsoleDao
-import com.example.androidprojcectcollectly.Dao.GameDao
+import com.example.androidprojcectcollectly.dao.GameConsoleDao
+import com.example.androidprojcectcollectly.dao.GameDao
 import com.example.androidprojcectcollectly.entities.Game
 import com.example.androidprojcectcollectly.entities.GameConsole
 import kotlinx.coroutines.CoroutineScope

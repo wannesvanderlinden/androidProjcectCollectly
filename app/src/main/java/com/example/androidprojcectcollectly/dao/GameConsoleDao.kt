@@ -1,4 +1,4 @@
-package com.example.androidprojcectcollectly.Dao
+package com.example.androidprojcectcollectly.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -10,6 +10,8 @@ import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface GameConsoleDao {
+    @Query("SELECT * FROM gameConsole where gameConsole.name = :name")
+    fun getGameConsolesByName(name: String): Flow<List<GameConsole>>
 
     @Query("SELECT * FROM gameconsole ORDER BY name ASC")
     fun getAlphabetizedGameConsoles(): Flow<List<GameConsole>>

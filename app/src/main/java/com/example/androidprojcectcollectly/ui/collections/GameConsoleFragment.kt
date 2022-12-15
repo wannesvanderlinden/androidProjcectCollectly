@@ -21,8 +21,6 @@ class GameConsoleFragment : Fragment() {
     }
 
 
-
-
     private var _binding: FragmentCollectionsBinding? = null
 
     // This property is only valid between onCreateView and
@@ -36,7 +34,6 @@ class GameConsoleFragment : Fragment() {
     ): View {
 
 
-
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
@@ -47,23 +44,23 @@ class GameConsoleFragment : Fragment() {
         //create the adapter and let some listeners with there attribute
         val adapter = GameConsoleListAdapter() {
             val bundle = Bundle()
-            bundle.putString("gameConsole",it)
+            bundle.putString("gameConsole", it)
 
-            (activity as MainActivity).navigate(R.id.navigation_games,bundle)
+            (activity as MainActivity).navigate(R.id.navigation_games, bundle)
 
         }
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
 
-        gameConsoleViewModel.allGameConsoles.observe(viewLifecycleOwner   ) { gameConsoles ->
+        gameConsoleViewModel.allGameConsoles.observe(viewLifecycleOwner) { gameConsoles ->
             // Update the cached copy of the words in the adapter.
             gameConsoles.let { adapter.submitList(it) }
         }
         val fab = binding.fab
         fab.setOnClickListener {
             val bundle = Bundle()
-            (activity as MainActivity).navigate(R.id.navigation_add_gameConsole,bundle)
+            (activity as MainActivity).navigate(R.id.navigation_add_gameConsole, bundle)
 
 
         }
@@ -71,6 +68,7 @@ class GameConsoleFragment : Fragment() {
 
         return root
     }
+
     //zie documentatie https://github.com/journeyapps/zxing-android-embedded
     private val barcodeLauncher = registerForActivityResult(
         ScanContract()

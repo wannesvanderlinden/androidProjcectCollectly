@@ -62,7 +62,7 @@ class AddGameFragment : Fragment() {
             }
         val button = binding.buttonSave
         button.setOnClickListener {
-            val replyIntent = Intent()
+
             if (TextUtils.isEmpty(editGameView.text)) {
                 Toast.makeText(
                     context,

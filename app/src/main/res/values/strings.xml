@@ -23,5 +23,6 @@
     <string name="title_radioButton">Select language</string>
     <string name="title_taal_english">English</string>
     <string name="Dutch_RadioButton">Dutch</string>
+    <string name="steamId_hint">SteamID</string>
 
 </resources>

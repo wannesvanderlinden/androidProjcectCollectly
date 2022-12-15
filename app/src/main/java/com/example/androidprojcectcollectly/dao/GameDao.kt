@@ -1,4 +1,4 @@
-package com.example.androidprojcectcollectly.Dao
+package com.example.androidprojcectcollectly.dao
 
 import androidx.room.Dao
 import androidx.room.Insert
