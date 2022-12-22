@@ -21,6 +21,13 @@ class GameViewModel (private val repository: GameRepository): ViewModel()  {
     fun insert(game: Game) = viewModelScope.launch {
         repository.insert(game)
     }
+    fun deleteAll() = viewModelScope.launch {
+        repository.deleteAll()
+    }
+
+    fun deleteGamesOfGameconsole(name:String) = viewModelScope.launch {
+        repository.deleteGamesOfGameconsole(name)
+    }
 }
 
 class GameViewModelFactory(private val repository: GameRepository) : ViewModelProvider.Factory {

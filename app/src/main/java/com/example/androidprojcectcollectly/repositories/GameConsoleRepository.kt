@@ -19,5 +19,8 @@ class GameConsoleRepository(private val gameConsoleDao: GameConsoleDao) {
     suspend fun insert(gameConsole: GameConsole) {
         gameConsoleDao.insert(gameConsole)
     }
+    suspend fun deleteAll(){
+        gameConsoleDao.deleteAll()
+    }
 
 }

@@ -19,6 +19,9 @@ interface GameDao {
     @Query("DELETE  FROM game")
     suspend fun deleteAll()
 
+    @Query("DELETE  FROM game where game.gameConsole = :gameconsole")
+    suspend fun deleteGamesOfGameconsole(gameconsole: String)
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(game: Game)
 }

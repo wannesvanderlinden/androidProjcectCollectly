@@ -21,6 +21,7 @@ class AddGameConsoleFragment : Fragment() {
     }
 
     private lateinit var editGameConsoleView: EditText
+    private var isDuplicated = false
 
     private var _binding: FragmentAddGameConsoleBinding? = null
 
@@ -46,6 +47,7 @@ class AddGameConsoleFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
+
 
 
 

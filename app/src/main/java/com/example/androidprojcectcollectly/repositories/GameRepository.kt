@@ -19,4 +19,10 @@ class GameRepository(private val gameDao: GameDao) {
     suspend fun insert(game: Game) {
         gameDao.insert(game)
     }
+    suspend fun deleteAll() {
+        gameDao.deleteAll()
+    }
+    suspend fun deleteGamesOfGameconsole(name: String) {
+        gameDao.deleteGamesOfGameconsole(name)
+    }
 }

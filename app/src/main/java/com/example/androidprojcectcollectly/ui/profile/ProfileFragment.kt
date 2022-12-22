@@ -2,6 +2,7 @@ package com.example.androidprojcectcollectly.ui.profile
 
 import android.content.Context
 import android.os.Bundle
+import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,11 +12,19 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import com.example.androidprojcectcollectly.*
 import com.example.androidprojcectcollectly.databinding.FragmentProfileBinding
 
 
 class ProfileFragment : Fragment() {
+    private val gameConsoleViewModel: GameConsoleViewModel by viewModels {
+        GameConsoleViewModelFactory((activity?.application as GameConsolesApplication).repository)
+    }
+    private val gameViewModel: GameViewModel by viewModels {
+        GameViewModelFactory((activity?.application as GameConsolesApplication).game_repository)
+    }
 
     private var _binding: FragmentProfileBinding? = null
     private var isEnabled = false
@@ -38,16 +47,48 @@ class ProfileFragment : Fragment() {
         val root: View = binding.root
 
 
-
-
         //Darkmode switch
         var darkmodeSwitch = binding.darkMode
 
-       //checking if dark mode was on and change the state of the switch
+        var gameConsoleDeleteBtn = binding.btnDeleteGameConsole
+        var gameDeleteBtn = binding.buttonDeleteGame
+        var deleteGame = binding.editGameField
+
+        //checking if dark mode was on and change the state of the switch
         if (this.activity?.getSharedPreferences("save", Context.MODE_PRIVATE)
                 ?.getBoolean(KEY_IS_ENABLED, false) == true
         ) {
             darkmodeSwitch.setChecked(true)
+        }
+
+        gameConsoleDeleteBtn.setOnClickListener {
+            gameConsoleViewModel.deleteAll()
+            gameViewModel.deleteAll()
+            Toast.makeText(
+                context,
+                "gameConsoles are deleted and all the games",
+                Toast.LENGTH_LONG
+            ).show()
+
+
+        }
+        gameDeleteBtn.setOnClickListener {
+            if (TextUtils.isEmpty(deleteGame.text)) {
+
+                Toast.makeText(
+                    context,
+                    "You can not leave the gameConsole Field blank",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+            else{
+                gameViewModel.deleteGamesOfGameconsole(deleteGame.text.toString())
+                Toast.makeText(
+                    context,
+                    "Successful deleted",
+                    Toast.LENGTH_LONG
+                ).show()
+            }
         }
 
 
