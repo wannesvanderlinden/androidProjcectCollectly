@@ -37,8 +37,9 @@ class AddGameConsoleFragment : Fragment() {
         editGameConsoleView = binding.editGameConsole
 
         val button = binding.buttonSave
+
         button.setOnClickListener {
-            val replyIntent = Intent()
+
             if (TextUtils.isEmpty(editGameConsoleView.text)) {
 
                 Toast.makeText(
@@ -47,9 +48,6 @@ class AddGameConsoleFragment : Fragment() {
                     Toast.LENGTH_LONG
                 ).show()
             } else {
-
-
-
 
                 val gameConsole = GameConsole(null, editGameConsoleView.text.toString())
 

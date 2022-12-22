@@ -37,5 +37,17 @@
         android:text="SteamID="
         app:layout_constraintBottom_toBottomOf="@+id/SteamIdField"
         app:layout_constraintEnd_toStartOf="@+id/SteamIdField"
-        app:layout_constraintTop_toTopOf="@+id/SteamIdField" />
+        app:layout_constraintTop_toTopOf="@+id/SteamIdField"
+        />
+
+    <TextView
+        android:id="@+id/no_internet"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Currently there is no internet connection! This function will not work"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_button" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

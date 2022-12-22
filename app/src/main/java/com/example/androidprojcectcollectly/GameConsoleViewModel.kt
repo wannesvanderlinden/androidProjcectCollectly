@@ -22,6 +22,9 @@ class GameConsoleViewModel (private val repository: GameConsoleRepository): View
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
+    fun getAllByName(name:String) = viewModelScope.launch {
+        repository.getAllByName(name)
+    }
 }
 
 class GameConsoleViewModelFactory(private val repository: GameConsoleRepository) : ViewModelProvider.Factory {

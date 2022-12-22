@@ -22,5 +22,8 @@ class GameConsoleRepository(private val gameConsoleDao: GameConsoleDao) {
     suspend fun deleteAll(){
         gameConsoleDao.deleteAll()
     }
+    suspend fun getAllByName(name :String){
+        gameConsoleDao.getGameConsolesByNameList(name)
+    }
 
 }
