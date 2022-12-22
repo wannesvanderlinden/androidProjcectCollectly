@@ -16,6 +16,8 @@ import androidx.fragment.app.viewModels
 import com.example.androidprojcectcollectly.*
 import com.example.androidprojcectcollectly.databinding.FragmentAddGameBinding
 import com.example.androidprojcectcollectly.entities.Game
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -25,6 +27,11 @@ class AddGameFragment : Fragment() {
     private lateinit var editGameView: EditText
     private var _binding: FragmentAddGameBinding? = null
     private var not_exist = true
+    private lateinit var auth: FirebaseAuth
+
+
+
+
     private val gameViewModel: GameViewModel by viewModels {
         GameViewModelFactory((activity?.application as GameConsolesApplication).game_repository)
     }
@@ -36,6 +43,11 @@ class AddGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        auth = Firebase.auth
+        val currentUser = auth.currentUser
+        auth.signInAnonymously()
+
+
         _binding = FragmentAddGameBinding.inflate(inflater, container, false)
         val root: View = binding.root
         // Inflate the layout for this fragment
