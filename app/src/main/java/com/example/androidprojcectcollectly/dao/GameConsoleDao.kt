@@ -15,7 +15,10 @@ interface GameConsoleDao {
 
     @Query("SELECT * FROM gameconsole ORDER BY name ASC")
     fun getAlphabetizedGameConsoles(): Flow<List<GameConsole>>
-
+    @Query("SELECT * FROM gameconsole")
+    fun getGameConsolesList(): List<GameConsole>
+    @Query("SELECT * FROM gameConsole where gameConsole.name = :name")
+    fun getGameConsolesByNameList(name: String): List<GameConsole>
 
 
     @Query("DELETE  FROM gameconsole")

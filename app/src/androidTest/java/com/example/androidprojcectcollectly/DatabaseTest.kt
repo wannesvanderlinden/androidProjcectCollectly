@@ -3,6 +3,7 @@ package com.example.androidprojcectcollectly
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
+import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.androidprojcectcollectly.dao.GameConsoleDao
 import com.example.androidprojcectcollectly.dao.GameDao
@@ -12,6 +13,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.runBlocking
+import org.hamcrest.core.IsEqual.equalTo
 import org.junit.After
 import org.junit.Assert
 import org.junit.Before
@@ -39,23 +41,35 @@ class DatabaseTest {
         gamesDao = database.gameDao()
         gameconsolesDao = database.gameConsoleDao()
     }
+
+    /**
+     * Testing of the gameconsoleInsert function is working
+     *
+     */
     @Test
     fun insertGameconsoleTest() = runBlocking {
-        val gameConsole = GameConsole(null,"3ds")
+        val gameConsole = GameConsole(50000,"3ds")
         gameconsolesDao.insert(gameConsole)
+        val byName = gameconsolesDao.getGameConsolesByNameList("3ds")
+        assertThat(byName.get(0),equalTo(gameConsole))
 
-        val latch = CountDownLatch(1)
-        val job = async(Dispatchers.IO) {
-            gameconsolesDao.getAlphabetizedGameConsoles().collect() {
-                Assert.assertTrue(it.contains(gameConsole))
-                latch.countDown()
-
-            }
-        }
-        latch.await()
-        job.cancelAndJoin()
     }
+    /**
+     * Test for that the delete all function is working
+     *
+     */
 
+    @Test
+    fun deleteGameconsoleTest() = runBlocking {
+        val gameConsole = GameConsole(50000,"3ds")
+        gameconsolesDao.insert(gameConsole)
+        gameconsolesDao.deleteAll()
+        val all = gameconsolesDao.getGameConsolesList()
+        val emptyList = emptyList<GameConsole>()
+
+        Assert.assertEquals(emptyList,all)
+
+    }
 
     /**
      * Close the database on the end
