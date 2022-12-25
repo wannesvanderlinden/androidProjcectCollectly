@@ -4,6 +4,7 @@ import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.transition.TransitionInflater
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -46,7 +47,10 @@ class AddGameFragment : Fragment() {
         auth = Firebase.auth
         val currentUser = auth.currentUser
         auth.signInAnonymously()
-
+//define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
 
         _binding = FragmentAddGameBinding.inflate(inflater, container, false)
         val root: View = binding.root

@@ -3,6 +3,7 @@ package com.example.androidprojcectcollectly.ui.steamProfileSearcher
 import android.net.ConnectivityManager
 import android.os.Bundle
 import android.text.TextUtils
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -37,8 +38,10 @@ class SteamProfileSearcherFragment : Fragment() {
         val dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-
-
+        //define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
 
 
         _binding = FragmentSteamProfileSearcherBinding.inflate(inflater, container, false)

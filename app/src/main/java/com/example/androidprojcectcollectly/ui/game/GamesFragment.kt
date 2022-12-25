@@ -2,6 +2,7 @@ package com.example.androidprojcectcollectly.ui.game
 
 import android.content.ContentValues
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -44,7 +45,10 @@ class GamesFragment : Fragment() {
 
         _binding = FragmentGamesBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
+//define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
 
         val recyclerView = binding.recyclerview
         //create the adapter and let some listeners with there attribute
@@ -58,8 +62,8 @@ class GamesFragment : Fragment() {
             // Update the cached copy of the words in the adapter.
 
             //get the gameConsole of the intent to filter
-            var console =arguments?.getString("gameConsole")
-            game.let { adapter.submitList(it.filter {singleGame-> singleGame.gameConsole ==console  }) }
+            var console = arguments?.getString("gameConsole")
+            game.let { adapter.submitList(it.filter { singleGame -> singleGame.gameConsole == console }) }
 
         }
 
@@ -83,6 +87,7 @@ class GamesFragment : Fragment() {
         // Inflate the layout for this fragment
         return root
     }
+
     //zie documentatie https://github.com/journeyapps/zxing-android-embedded
     private val barcodeLauncher = registerForActivityResult(
         ScanContract()
@@ -98,11 +103,10 @@ class GamesFragment : Fragment() {
                 Toast.LENGTH_LONG
             ).show()
             val bundle = Bundle()
-            bundle.putString("barcode",result.contents)
-            bundle.putString("gameConsole",arguments?.getString("gameConsole"))
+            bundle.putString("barcode", result.contents)
+            bundle.putString("gameConsole", arguments?.getString("gameConsole"))
 
-            (activity as MainActivity).navigate(R.id.navigation_add_games,bundle)
-
+            (activity as MainActivity).navigate(R.id.navigation_add_games, bundle)
 
 
         }

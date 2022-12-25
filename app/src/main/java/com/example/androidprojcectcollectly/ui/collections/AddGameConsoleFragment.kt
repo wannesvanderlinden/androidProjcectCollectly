@@ -3,6 +3,7 @@ package com.example.androidprojcectcollectly.ui.collections
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
+import android.transition.TransitionInflater
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -32,6 +33,10 @@ class AddGameConsoleFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        //define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.explode)
         _binding = FragmentAddGameConsoleBinding.inflate(inflater, container, false)
         val root: View = binding.root
         editGameConsoleView = binding.editGameConsole

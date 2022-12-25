@@ -1,6 +1,7 @@
 package com.example.androidprojcectcollectly.ui.collections
 
 import android.os.Bundle
+import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,7 +34,10 @@ class GameConsoleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
+//define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
         val homeViewModel =
             ViewModelProvider(this).get(HomeViewModel::class.java)
 
