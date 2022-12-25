@@ -34,9 +34,11 @@ class GamesFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        //define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
     }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,8 +49,7 @@ class GamesFragment : Fragment() {
         val root: View = binding.root
 //define inflatertransition
         val inflaterTran = TransitionInflater.from(requireContext())
-        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
-        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
+
 
         val recyclerView = binding.recyclerview
         //create the adapter and let some listeners with there attribute

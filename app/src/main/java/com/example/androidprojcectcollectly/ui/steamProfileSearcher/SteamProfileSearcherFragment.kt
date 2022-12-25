@@ -29,6 +29,13 @@ class SteamProfileSearcherFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -38,10 +45,7 @@ class SteamProfileSearcherFragment : Fragment() {
         val dashboardViewModel =
             ViewModelProvider(this).get(DashboardViewModel::class.java)
 
-        //define inflatertransition
-        val inflaterTran = TransitionInflater.from(requireContext())
-        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
-        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
+
 
 
         _binding = FragmentSteamProfileSearcherBinding.inflate(inflater, container, false)

@@ -35,6 +35,13 @@ class ProfileFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        //define inflatertransition
+        val inflaterTran = TransitionInflater.from(requireContext())
+        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
+        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,10 +53,7 @@ class ProfileFragment : Fragment() {
 
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        //define inflatertransition
-        val inflaterTran = TransitionInflater.from(requireContext())
-        exitTransition = inflaterTran.inflateTransition(R.transition.fade)
-        enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
+
 
         //Darkmode switch
         var darkmodeSwitch = binding.darkMode
