@@ -5,6 +5,7 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -49,6 +50,7 @@ class GameConsoleFragment : Fragment() {
         val root: View = binding.root
         //Define the recyclerview
         val recyclerView = binding.recyclerview
+
         //create the adapter and let some listeners with there attribute
         val adapter = GameConsoleListAdapter() {
             val bundle = Bundle()
