@@ -39,6 +39,7 @@ class GamesFragment : Fragment() {
         exitTransition = inflaterTran.inflateTransition(R.transition.fade)
         enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
     }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -47,17 +48,20 @@ class GamesFragment : Fragment() {
 
         _binding = FragmentGamesBinding.inflate(inflater, container, false)
         val root: View = binding.root
-//define inflatertransition
+        //define inflatertransition
         val inflaterTran = TransitionInflater.from(requireContext())
 
-
+        //Define recyclerView
         val recyclerView = binding.recyclerview
+
         //create the adapter and let some listeners with there attribute
         val adapter = GameListAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-
+        /**
+         * Adding observer when the data change
+         */
         gameViewModel.allGames.observe(viewLifecycleOwner) { game ->
 
             // Update the cached copy of the words in the adapter.
@@ -67,8 +71,11 @@ class GamesFragment : Fragment() {
             game.let { adapter.submitList(it.filter { singleGame -> singleGame.gameConsole == console }) }
 
         }
-
         val fab = binding.fab
+
+        /**
+         * Adding listener to open the barcode scanner
+         */
         fab.setOnClickListener {
             var scanoption = ScanOptions()
             scanoption.setDesiredBarcodeFormats(
@@ -89,7 +96,9 @@ class GamesFragment : Fragment() {
         return root
     }
 
-    //zie documentatie https://github.com/journeyapps/zxing-android-embedded
+    /**
+     *See documentatie https://github.com/journeyapps/zxing-android-embedded
+     */
     private val barcodeLauncher = registerForActivityResult(
         ScanContract()
     ) { result: ScanIntentResult ->

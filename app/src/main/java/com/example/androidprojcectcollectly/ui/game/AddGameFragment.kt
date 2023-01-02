@@ -44,18 +44,23 @@ class AddGameFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
+        //anonymous auth for firebase
         auth = Firebase.auth
-        val currentUser = auth.currentUser
         auth.signInAnonymously()
-//define inflatertransition
+
+        //define inflatertransition
         val inflaterTran = TransitionInflater.from(requireContext())
         exitTransition = inflaterTran.inflateTransition(R.transition.fade)
         enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
 
         _binding = FragmentAddGameBinding.inflate(inflater, container, false)
         val root: View = binding.root
+
         // Inflate the layout for this fragment
         editGameView = binding.editGame
+
+        //Define the firebase to  auto complete when exist
         val db = Firebase.firestore
         db.collection("games").get().addOnSuccessListener { result ->
             for (document in result) {
@@ -77,6 +82,10 @@ class AddGameFragment : Fragment() {
                 Log.w(TAG, "Error getting documents.", exception)
             }
         val button = binding.buttonSave
+
+        /**
+         *Add button click listener when game create and write when the game doesn't exist in the firebase
+         */
         button.setOnClickListener {
 
             if (TextUtils.isEmpty(editGameView.text)) {

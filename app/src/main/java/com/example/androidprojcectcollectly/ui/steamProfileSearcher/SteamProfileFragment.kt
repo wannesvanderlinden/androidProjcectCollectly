@@ -14,11 +14,7 @@ import com.squareup.picasso.Picasso
 private const val ARG_PARAM1 = "param1"
 private const val ARG_PARAM2 = "param2"
 
-/**
- * A simple [Fragment] subclass.
- * Use the [SteamProfileFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
+
 class SteamProfileFragment : Fragment() {
     private var _binding: FragmentSteamProfileBinding? = null
     private val binding get() = _binding!!
@@ -34,19 +30,23 @@ class SteamProfileFragment : Fragment() {
     ): View? {
         _binding = FragmentSteamProfileBinding.inflate(inflater, container, false)
         val root: View = binding.root
-        Picasso.get().load(arguments?.get("avatarLink").toString()).into(binding.imageView2);
-         binding.steamProfileName.text = arguments?.get("personame").toString()
-        binding.SteamId.text = arguments?.get("steamid").toString()
-        if(arguments?.get("loccountrycode") !=null){
-            binding.Country.text =arguments?.get("loccountrycode").toString()
 
-        }
-        else{
-             var country = getString( R.string.Country_unavailable)
+        //Load the image of the steam profile with the link that was given by the bundel.
+        Picasso.get().load(arguments?.get("avatarLink").toString()).into(binding.imageView2)
+
+        //Getting the steam profile data of the bundle
+        binding.steamProfileName.text = arguments?.get("personame").toString()
+        binding.SteamId.text = arguments?.get("steamid").toString()
+
+        //Checking if the country code is not private
+        if (arguments?.get("loccountrycode") != null) {
+            binding.Country.text = arguments?.get("loccountrycode").toString()
+
+        } else {
+            var country = getString(R.string.Country_unavailable)
             binding.Country.text = country
 
         }
-
 
 
         // Inflate the layout for this fragment

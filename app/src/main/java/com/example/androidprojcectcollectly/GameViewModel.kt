@@ -12,19 +12,27 @@ class GameViewModel (private val repository: GameRepository): ViewModel()  {
     // - We can put an observer on the data (instead of polling for changes) and only update the
     //   the UI when the data actually changes.
     // - Repository is completely separated from the UI through the ViewModel.
+
     val allGames: LiveData<List<Game>> = repository.allGames.asLiveData()
 
 
     /**
-     * Launching a new coroutine to insert the data in a non-blocking way
+     * Launching a new coroutine to insert game  in a non-blocking way
      */
     fun insert(game: Game) = viewModelScope.launch {
         repository.insert(game)
     }
+
+    /**
+     * Launching a new coroutine to delete all games in a non-blocking way
+     */
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
 
+    /**
+     * Launching a new coroutine to delete all games of a gameconsole  in a non-blocking way
+     */
     fun deleteGamesOfGameconsole(name:String) = viewModelScope.launch {
         repository.deleteGamesOfGameconsole(name)
     }

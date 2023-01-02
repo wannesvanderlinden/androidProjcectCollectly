@@ -60,12 +60,17 @@ class GameConsoleFragment : Fragment() {
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(activity)
 
-
+        /**
+         *Observer when gameconsoles are deleted or added
+         */
         gameConsoleViewModel.allGameConsoles.observe(viewLifecycleOwner) { gameConsoles ->
-            // Update the cached copy of the words in the adapter.
+            // Update the cached copy of the gameconsoles in the adapter.
             gameConsoles.let { adapter.submitList(it) }
         }
         val fab = binding.fab
+        /**
+         *Listner when you press the plus button and will navigate you to the add gameconsole fragment
+         */
         fab.setOnClickListener {
             val bundle = Bundle()
             (activity as MainActivity).navigate(R.id.navigation_add_gameConsole, bundle)
@@ -77,22 +82,7 @@ class GameConsoleFragment : Fragment() {
         return root
     }
 
-    //zie documentatie https://github.com/journeyapps/zxing-android-embedded
-    private val barcodeLauncher = registerForActivityResult(
-        ScanContract()
-    ) { result: ScanIntentResult ->
-        if (result.contents == null) {
-            Toast.makeText(activity, "Cancelled", Toast.LENGTH_LONG).show()
-            // this.findViewById<TextView>(R.id.resultText).text = result.contents
-        } else {
-            Toast.makeText(
-                activity,
-                "Scanned Upc: " + result.contents,
-                Toast.LENGTH_LONG
-            ).show()
-            //this.findViewById<TextView>(R.id.resultText).text = result.contents
-        }
-    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -31,7 +31,8 @@ class SteamProfileSearcherFragment : Fragment() {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //define inflatertransition
+
+        //define inflatertransition when switching in fragments
         val inflaterTran = TransitionInflater.from(requireContext())
         exitTransition = inflaterTran.inflateTransition(R.transition.fade)
         enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
@@ -54,6 +55,10 @@ class SteamProfileSearcherFragment : Fragment() {
         val root: View = binding.root
         binding.noInternet.setVisibility(View.GONE)
 
+        /**
+         * Define listner when user press the search profile button to check it is not empty
+         * and makes an api call to the steam api if it is not empty and does have internet connection
+         */
         binding.searchButton.setOnClickListener {
 
             if (TextUtils.isEmpty(searchSteamProfile.text)) {
@@ -64,12 +69,13 @@ class SteamProfileSearcherFragment : Fragment() {
                 ).show()
             } else {
 
+                //create connectivity manager to check if the device is connected to the internet
                 val connectivityManager =
                     getSystemService(context!!, ConnectivityManager::class.java)
                 if (connectivityManager?.getNetworkCapabilities(connectivityManager?.getActiveNetwork()) != null) {
-
+                    //Delete the no internet banner
                     binding.noInternet.setVisibility(View.GONE)
-
+                    //Get all the information of the api and put it in a bundel to show in the next fragment
                     var steamId = searchSteamProfile.text.toString()
                     SteamApi.getData(steamId) { profile: SteamProfile? ->
                         if (profile != null && profile.response.players.isNotEmpty()) {
@@ -96,6 +102,7 @@ class SteamProfileSearcherFragment : Fragment() {
                         }
                     }
                 } else {
+                    //Add the no internet banner because it is not connected to the internet
                     binding.noInternet.setVisibility(View.VISIBLE)
 
                     Toast.makeText(

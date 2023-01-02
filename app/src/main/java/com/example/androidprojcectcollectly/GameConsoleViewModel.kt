@@ -13,15 +13,24 @@ class GameConsoleViewModel (private val repository: GameConsoleRepository): View
     val allGameConsoles: LiveData<List<GameConsole>> = repository.allGameConsoles.asLiveData()
 
     /**
-     * Launching a new coroutine to insert the data in a non-blocking way
+     * Launching a new coroutine to insert gameConsole in a non-blocking way
      */
     fun insert(gameConsole: GameConsole) = viewModelScope.launch {
 
         repository.insert(gameConsole)
     }
+
+    /**
+     * Launching a new coroutine to delete all gameConsole in a non-blocking way
+     */
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
+
+
+    /**
+     * Launching a new coroutine to get all gameConsole by name in a non-blocking way
+     */
     fun getAllByName(name:String) = viewModelScope.launch {
         repository.getAllByName(name)
     }

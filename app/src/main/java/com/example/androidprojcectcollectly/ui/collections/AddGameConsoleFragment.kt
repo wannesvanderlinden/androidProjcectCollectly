@@ -43,6 +43,10 @@ class AddGameConsoleFragment : Fragment() {
 
         val button = binding.buttonSave
 
+        /**
+         * Listen to the click on the button to add the gameconsole to the database
+         * if empty notify the user
+         */
         button.setOnClickListener {
 
             if (TextUtils.isEmpty(editGameConsoleView.text)) {

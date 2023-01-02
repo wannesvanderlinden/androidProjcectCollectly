@@ -37,7 +37,8 @@ class ProfileFragment : Fragment() {
     private val binding get() = _binding!!
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //define inflatertransition
+
+        //define inflatertransition for transitions between navigation
         val inflaterTran = TransitionInflater.from(requireContext())
         exitTransition = inflaterTran.inflateTransition(R.transition.fade)
         enterTransition = inflaterTran.inflateTransition(R.transition.slide_right)
@@ -58,6 +59,7 @@ class ProfileFragment : Fragment() {
         //Darkmode switch
         var darkmodeSwitch = binding.darkMode
 
+        //Getting all buttons and text fields
         var gameConsoleDeleteBtn = binding.btnDeleteGameConsole
         var gameDeleteBtn = binding.buttonDeleteGame
         var deleteGame = binding.editGameField
@@ -69,6 +71,10 @@ class ProfileFragment : Fragment() {
             darkmodeSwitch.setChecked(true)
         }
 
+
+        /**
+         * Adding listener when button is pressed to delete the whole database
+         */
         gameConsoleDeleteBtn.setOnClickListener {
             gameConsoleViewModel.deleteAll()
             gameViewModel.deleteAll()
@@ -80,6 +86,10 @@ class ProfileFragment : Fragment() {
 
 
         }
+
+        /**
+         * Adding listener when button is pressed to delete all games of a gameconsole
+         */
         gameDeleteBtn.setOnClickListener {
             if (TextUtils.isEmpty(deleteGame.text)) {
 
@@ -99,7 +109,9 @@ class ProfileFragment : Fragment() {
         }
 
 
-        //Listener for nightmode
+        /**
+         * Adding listener for darkmode
+         */
         darkmodeSwitch.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
             //Looking when it is checked or not and than change it
             if (isChecked) {

@@ -17,6 +17,9 @@ import kotlinx.coroutines.launch
  abstract class GameConsoleRoomDatabase : RoomDatabase()  {
     abstract fun gameConsoleDao(): GameConsoleDao
     abstract fun gameDao(): GameDao
+    /**
+     *Create the room database and put some default content in
+     */
     private class GameConsoleDatabaseCallback(
         private val scope: CoroutineScope
     ) : RoomDatabase.Callback() {
@@ -48,6 +51,9 @@ import kotlinx.coroutines.launch
 
 
     }
+    /**
+     *Getting the database instance without opening multiple instances
+     */
     companion object {
         // Singleton prevents multiple instances of database opening at the
         // same time.

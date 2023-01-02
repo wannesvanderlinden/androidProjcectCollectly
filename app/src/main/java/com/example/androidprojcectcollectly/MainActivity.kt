@@ -27,19 +27,26 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
 
-
-
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         actionBar?.setDisplayShowHomeEnabled(true)
         setContentView(binding.root)
-        var checked =
-            this.getSharedPreferences("save", Context.MODE_PRIVATE)?.getBoolean(ProfileFragment().KEY_IS_ENABLED, false)
 
-        if (checked== true
+        /**
+         * Checking if nightmode was on before the app was closed
+         *
+         */
+        var checked =
+            this.getSharedPreferences("save", Context.MODE_PRIVATE)
+                ?.getBoolean(ProfileFragment().KEY_IS_ENABLED, false)
+
+        if (checked == true
         ) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
+
+        /**
+         * Add the buttom navigation with his controller
+         */
         val navView: BottomNavigationView = binding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_nav)
@@ -54,15 +61,27 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
     }
 
+    /**
+     * Function to call when we want to navigate to the certain fragment.
+     * Id must been given
+     */
     fun navigate(navigationId: Int) {
 
         findNavController(R.id.nav_host_fragment_activity_nav).navigate(navigationId)
     }
 
+    /**
+     * Function to call when we want to navigate to the certain fragment with a bundel of data.
+     * Id must been given
+     */
     fun navigate(navigationId: Int, bundle: Bundle?) {
         findNavController(R.id.nav_host_fragment_activity_nav).navigate(navigationId, bundle)
     }
 
+    /**
+     * Function to call when we press an icon of the navigation bar.
+     *
+     */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
