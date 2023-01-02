@@ -24,5 +24,12 @@
     <string name="title_taal_english">English</string>
     <string name="Dutch_RadioButton">Dutch</string>
     <string name="steamId_hint">SteamID</string>
+    <string name="error_steamProfile_empty">Don\'t leave the steamId empty</string>
+    <string name="Steam_profile_not_found">Player profile not found</string>
+    <string name="No_internet_connection">No internet connection</string>
+    <string name="Country_unavailable">Unavailable (private)</string>
+    <string name="GameConsole_delete_message">GameConsoles are deleted and their games</string>
+    <string name="GameConsole_field_blank">You cannot leave the gameConsole field empty</string>
+    <string name="Succes_message_delete">Successfull deleted</string>
 
 </resources>

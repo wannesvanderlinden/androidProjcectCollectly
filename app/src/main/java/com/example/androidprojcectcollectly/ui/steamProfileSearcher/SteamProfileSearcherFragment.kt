@@ -59,13 +59,14 @@ class SteamProfileSearcherFragment : Fragment() {
             if (TextUtils.isEmpty(searchSteamProfile.text)) {
                 Toast.makeText(
                     context,
-                    "Don't leave the steamId empty",
+                    R.string.error_steamProfile_empty,
                     Toast.LENGTH_LONG
                 ).show()
             } else {
 
-                val connectivityManager = getSystemService(context!!,ConnectivityManager::class.java)
-                if (connectivityManager?.getNetworkCapabilities( connectivityManager?.getActiveNetwork()) != null) {
+                val connectivityManager =
+                    getSystemService(context!!, ConnectivityManager::class.java)
+                if (connectivityManager?.getNetworkCapabilities(connectivityManager?.getActiveNetwork()) != null) {
 
                     binding.noInternet.setVisibility(View.GONE)
 
@@ -89,18 +90,17 @@ class SteamProfileSearcherFragment : Fragment() {
                         } else {
                             Toast.makeText(
                                 context,
-                                "Player not found",
+                                R.string.Steam_profile_not_found,
                                 Toast.LENGTH_LONG
                             ).show()
                         }
                     }
-                }
-                else{
+                } else {
                     binding.noInternet.setVisibility(View.VISIBLE)
 
                     Toast.makeText(
                         context,
-                        "No internet Connection ",
+                        R.string.No_internet_connection,
                         Toast.LENGTH_LONG
                     ).show()
                 }
@@ -115,7 +115,6 @@ class SteamProfileSearcherFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 
 
 }

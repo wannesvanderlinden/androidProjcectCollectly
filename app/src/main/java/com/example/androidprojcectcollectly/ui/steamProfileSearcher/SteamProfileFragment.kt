@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.androidprojcectcollectly.R
 import com.example.androidprojcectcollectly.databinding.FragmentSteamProfileBinding
 import com.squareup.picasso.Picasso
 
@@ -41,7 +42,8 @@ class SteamProfileFragment : Fragment() {
 
         }
         else{
-            binding.Country.text = "unavailable (private)"
+             var country = getString( R.string.Country_unavailable)
+            binding.Country.text = country
 
         }
 

@@ -74,7 +74,7 @@ class ProfileFragment : Fragment() {
             gameViewModel.deleteAll()
             Toast.makeText(
                 context,
-                "gameConsoles are deleted and all the games",
+                R.string.GameConsole_delete_message,
                 Toast.LENGTH_LONG
             ).show()
 
@@ -85,15 +85,14 @@ class ProfileFragment : Fragment() {
 
                 Toast.makeText(
                     context,
-                    "You can not leave the gameConsole Field blank",
+                    R.string.GameConsole_field_blank,
                     Toast.LENGTH_LONG
                 ).show()
-            }
-            else{
+            } else {
                 gameViewModel.deleteGamesOfGameconsole(deleteGame.text.toString())
                 Toast.makeText(
                     context,
-                    "Successful deleted",
+                    R.string.Succes_message_delete,
                     Toast.LENGTH_LONG
                 ).show()
             }

@@ -26,4 +26,11 @@
     <string name="title_taal_english">Engels</string>
     <string name="Dutch_RadioButton">Nederlands</string>
     <string name="steamId_hint">SteamID</string>
+    <string name="error_steamProfile_empty">Laat de steamId niet leeg</string>
+    <string name="Steam_profile_not_found">Speler\' s profiel niet gevonden</string>
+    <string name="No_internet_connection">Geen internet verbinding</string>
+    <string name="Country_unavailable">Niet beschikbaar (privaat)</string>
+    <string name="GameConsole_delete_message">Spelcomputers zijn gedelet en al hun spellen</string>
+    <string name="GameConsole_field_blank">Je kan de gameConsole veld niet leeg laten</string>
+    <string name="Succes_message_delete">Succesvol verwijderd</string>
 </resources>

@@ -7,11 +7,13 @@ import androidx.test.espresso.matcher.ViewMatchers.assertThat
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.example.androidprojcectcollectly.dao.GameConsoleDao
 import com.example.androidprojcectcollectly.dao.GameDao
+import com.example.androidprojcectcollectly.entities.Game
 import com.example.androidprojcectcollectly.entities.GameConsole
 import com.example.androidprojcectcollectly.rooms.GameConsoleRoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.cancelAndJoin
+import kotlinx.coroutines.flow.toList
 import kotlinx.coroutines.runBlocking
 import org.hamcrest.core.IsEqual.equalTo
 import org.junit.After
@@ -70,6 +72,7 @@ class DatabaseTest {
         Assert.assertEquals(emptyList,all)
 
     }
+
 
     /**
      * Close the database on the end
