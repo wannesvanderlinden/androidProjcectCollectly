@@ -45,9 +45,7 @@ class AddGameFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        //anonymous auth for firebase
-        auth = Firebase.auth
-        auth.signInAnonymously()
+
 
         //define inflatertransition
         val inflaterTran = TransitionInflater.from(requireContext())
@@ -59,9 +57,14 @@ class AddGameFragment : Fragment() {
 
         // Inflate the layout for this fragment
         editGameView = binding.editGame
+        //anonymous auth for firebase
+        auth = FirebaseAuth.getInstance()
+        auth.signInAnonymously()
+
 
         //Define the firebase to  auto complete when exist
         val db = Firebase.firestore
+
         db.collection("games").get().addOnSuccessListener { result ->
             for (document in result) {
                 Log.d(TAG, "${document.id} => ${document.data}")
@@ -110,7 +113,7 @@ class AddGameFragment : Fragment() {
 
                 gameViewModel.insert(game)
 
-                (activity as MainActivity).navigate(R.id.navigation_games)
+                (activity as MainActivity).navigate(R.id.navigation_home)
             }
 
         }
