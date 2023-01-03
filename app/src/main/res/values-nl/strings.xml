@@ -33,4 +33,7 @@
     <string name="GameConsole_delete_message">Spelcomputers zijn gedelet en al hun spellen</string>
     <string name="GameConsole_field_blank">Je kan de gameConsole veld niet leeg laten</string>
     <string name="Succes_message_delete">Succesvol verwijderd</string>
+    <string name="appwidget_text">klik om te openen</string>
+    <string name="app_widget_description">Dit is om de app te openen</string>
+    <string name="add_widget">Voeg widget toe</string>
 </resources>
