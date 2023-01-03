@@ -2,36 +2,42 @@ package com.example.androidprojcectcollectly
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
-import android.app.PendingIntent
+import android.content.BroadcastReceiver
 import android.content.Context
-import android.content.Intent
-import android.net.ConnectivityManager
+import android.content.IntentFilter
+import android.net.wifi.WifiManager
 import android.os.Build
 import android.os.Bundle
 import android.view.MenuItem
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat
-import androidx.fragment.app.commit
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.example.androidprojcectcollectly.broadcastRecievers.NetworkBroadcastReciever
 import com.example.androidprojcectcollectly.databinding.ActivityMainBinding
 import com.example.androidprojcectcollectly.ui.profile.ProfileFragment
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.ktx.auth
-import com.google.firebase.ktx.Firebase
-import java.time.LocalDateTime
-import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
-
+    private val networkBroadcastReciever: BroadcastReceiver = NetworkBroadcastReciever()
     private lateinit var binding: ActivityMainBinding
     val CHANNEL_ID = "1"
+
+    /**
+     * Create intentFilter when wifi is changed to of and on
+     * Register the reciever that will send notifications
+     *
+     */
+    override fun onStart() {
+        super.onStart()
+        var intenFilter = IntentFilter(WifiManager.WIFI_STATE_CHANGED_ACTION)
+
+        registerReceiver(networkBroadcastReciever, intenFilter)
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
@@ -41,23 +47,7 @@ class MainActivity : AppCompatActivity() {
         actionBar?.setDisplayShowHomeEnabled(true)
         setContentView(binding.root)
         createNotificationChannel()
-        val intent = Intent(this, MainActivity::class.java).apply {
-            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-        }
-        val pendingIntent: PendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
 
-        var builder = NotificationCompat.Builder(this, CHANNEL_ID)
-            .setSmallIcon(R.drawable.logo_200x200)
-            .setContentTitle("Long time no seeing")
-            .setContentText("It is a long time ago that you checked in")
-            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
-            .setContentIntent(pendingIntent)
-            .setAutoCancel(true)
-
-        with(NotificationManagerCompat.from(this)) {
-            // notificationId is a unique int for each notification that you must define
-            notify(1, builder.build())
-        }
 
         /**
          * Checking if nightmode was on before the app was closed
@@ -90,6 +80,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     /**
+     * Unregister the reciever that will send notifications when the application is destroyed
+     *
+     */
+    override fun onStop() {
+        super.onStop()
+        unregisterReceiver(networkBroadcastReciever)
+    }
+
+    /**
      * Function to call when we want to navigate to the certain fragment.
      * Id must been given
      */
@@ -119,6 +118,11 @@ class MainActivity : AppCompatActivity() {
         }
         return super.onOptionsItemSelected(item)
     }
+
+    /**
+     * The function will create the notification channel where notification of the wifi disabling will be send
+     *
+     */
     private fun createNotificationChannel() {
         // Create the NotificationChannel, but only on API 26+ because
         // the NotificationChannel class is new and not in the support library
