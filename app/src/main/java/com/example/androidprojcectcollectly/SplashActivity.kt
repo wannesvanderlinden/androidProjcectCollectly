@@ -21,8 +21,8 @@ class SplashActivity : AppCompatActivity() {
         mediaplayer.start()
         //Animations setting
         var topAnim = AnimationUtils.loadAnimation(this, R.transition.from_top)
-        var bottomAnim = AnimationUtils.loadAnimation(this, R.transition.buttom_animation)
-        var rotateAnim = AnimationUtils.loadAnimation(this, R.transition.rotate_animation)
+        var bottomAnim = AnimationUtils.loadAnimation(this, R.anim.buttom_animation)
+        var rotateAnim = AnimationUtils.loadAnimation(this, R.anim.rotate_animation)
 
         var logo = findViewById<ImageView>(R.id.gameController)
         var slogan = findViewById<TextView>(R.id.slogan)
