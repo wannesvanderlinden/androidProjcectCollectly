@@ -25,6 +25,7 @@ class CollectionListWidget : AppWidgetProvider() {
 
     override fun onEnabled(context: Context) {
         // Enter relevant functionality for when the first widget is created
+
     }
 
     override fun onDisabled(context: Context) {
@@ -46,9 +47,9 @@ internal fun updateAppWidget(
     intent.data = Uri.parse("https://gamerant.com/gaming/")
 var pendingIntent = PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
 */
-    views.setTextViewText(R.id.appwidget_button, widgetText)
+    //views.setTextViewText(R.id.appwidget_button, widgetText)
     //views.setOnClickPendingIntent(R.id.appwidget_button,pendingIntent)
 
-    // Instruct the widget manager to update the widget
+        // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
 }
