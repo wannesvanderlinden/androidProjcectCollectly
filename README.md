@@ -1,5 +1,5 @@
 # androidProjcectCollectly
-##Implemeted extra features
+## Implemeted extra features
 - When the user turn off the wifi a notification will be send to the user with broadcast reciever
 - Steam profile searcher will be disabled when there is no netwerk connectivitie and will create a banner on the fragment
 - A basic Widget is available when pressed the application will open
