@@ -20,7 +20,7 @@
     <fragment
         android:id="@+id/navigation_notifications"
         android:name="com.example.androidprojcectcollectly.ui.profile.ProfileFragment"
-        android:label="@string/title_profile"
+        android:label="@string/title_settings"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/navigation_games"

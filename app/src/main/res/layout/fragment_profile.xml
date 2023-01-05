@@ -7,12 +7,12 @@
     tools:context=".ui.profile.ProfileFragment">
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="100dp"
+        app:cardCornerRadius="10dp"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -26,7 +26,7 @@
                 android:id="@+id/btn_delete_gameConsole"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delete GameConsoles"
+                android:text="@string/button_delete_gameconsoles"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
@@ -36,7 +36,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="4dp"
-                android:text="To delete all game consoles press the button below:"
+                android:text="@string/text_delete_all_gameconsoles"
                 android:textAlignment="center"
                 app:layout_constraintBottom_toTopOf="@+id/btn_delete_gameConsole"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -76,7 +76,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"
-                    android:text="To delete all games of a spesific console fill in the name of the console:"
+                    android:text="@string/text_delete_all_games_gameconsole"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
@@ -88,7 +88,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="15dp"
-                    android:text="Delete games"
+                    android:text="@string/text_button_delete_games"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -97,7 +97,7 @@
                     android:id="@+id/textView8"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="GameConsole:"
+                    android:text="@string/text_gameconsole"
                     app:layout_constraintBottom_toBottomOf="@+id/edit_game_field"
                     app:layout_constraintEnd_toStartOf="@+id/edit_game_field"
                     app:layout_constraintStart_toStartOf="parent" />
@@ -109,7 +109,7 @@
             android:id="@+id/darkMode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DarkMode"
+            android:text="@string/text_darkmode"
             app:layout_constraintBottom_toTopOf="@+id/cardView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />

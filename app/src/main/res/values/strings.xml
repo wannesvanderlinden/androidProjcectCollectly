@@ -17,7 +17,7 @@
     <string name="title_add_gameconsole">Add gameconsole</string>
     <string name="title_collections">Collections</string>
     <string name="title_priceCheck">Steam searcher</string>
-    <string name="title_profile">Profile</string>
+    <string name="title_settings">Settings</string>
     <!-- Radio button strings-->
 
     <string name="title_radioButton">Select language</string>
@@ -34,5 +34,19 @@
     <string name="appwidget_text">Click to open</string>
     <string name="add_widget">Add widget</string>
     <string name="app_widget_description">This is to open the app</string>
+    <string name="text_delete_all_gameconsoles">To delete all game consoles press the button below:</string>
+    <string name="text_delete_all_games_gameconsole">To delete all games of a spesific console fill in the name of the console:</string>
+    <string name="text_button_delete_games">delete games</string>
+    <string name="button_delete_gameconsoles">Delete GameConsoles</string>
+    <string name="button_steam_profile_searcher">search profile</string>
+    <string name="No_internet_banner">Currently there is no internet connection! This function will not work</string>
+    <string name="text_profiel_name">Profile name:</string>
+    <string name="text_country">Country:</string>
+    <string name="text_default" translatable="false">textView</string>
+    <string name="text_steamId" translatable="false">SteamID</string>
+    <string name="text_steamID_profile" translatable="false">SteamID:</string>
+    <string name="text_darkmode" translatable="false">DarkMode</string>
+    <string name="text_gameconsole" translatable="false">GameConsole:</string>
+    <string name="title_notification">Wifi is turned off!!!</string>
 
 </resources>

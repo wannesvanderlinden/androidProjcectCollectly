@@ -7,15 +7,15 @@
     tools:context=".ui.steamProfileSearcher.SteamProfileSearcherFragment">
 
 
-
     <EditText
         android:id="@+id/SteamIdField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:ems="10"
-        android:inputType="textPersonName"
         android:hint="@string/steamId_hint"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
@@ -25,7 +25,7 @@
         android:id="@+id/search_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Profile"
+        android:text="@string/button_steam_profile_searcher"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SteamIdField" />
@@ -34,7 +34,7 @@
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SteamID="
+        android:text="@string/text_steamID_profile"
         app:layout_constraintBottom_toBottomOf="@+id/SteamIdField"
         app:layout_constraintEnd_toStartOf="@+id/SteamIdField"
         app:layout_constraintTop_toTopOf="@+id/SteamIdField"
@@ -44,7 +44,10 @@
         android:id="@+id/no_internet"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Currently there is no internet connection! This function will not work"
+        android:text="@string/No_internet_banner"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textStyle="bold|italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

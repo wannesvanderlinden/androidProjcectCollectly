@@ -1,31 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">androidProjcectCollectly</string>
-    <string name="hint_gameConsole">Wii</string>
-    <string name="button_save">Opslaan</string>
-    <string name="empty_not_saved">GameConsole is niet opgeslaan wegen leegte.</string>
+    <!-- Project name-->
+    <string name="app_name">Collectly</string>
 
-    <string name="add_gameConsole">Voeg een gameConsole toe</string>
-    <string name="title_activity_nav">nav</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <!-- Hint strings-->
+    <string name="hint_gameConsole">Wii</string>
     <string name="hint_game">Mario Bros</string>
-    <!-- Nederlands items -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_games">Games</string>
+    <string name="steamId_hint">SteamID</string>
+
+    <!-- Text for textView or others-->
+    <string name="text_delete_all_games_gameconsole">Om alle spellen van een specifieke console te verwijderen, vult u de naam van de console in:</string>
+    <string name="text_button_delete_games">Verwijder spellen</string>
+    <string name="text_delete_all_gameconsoles">Om alle spelconsoles te verwijderen, druk op de onderstaande knop:</string>
+    <string name="text_profiel_name">Profiel naam:</string>
+    <string name="text_country">Regio:</string>
+    <string name="appwidget_text">klik om te openen</string>
+    <string name="add_gameConsole">Voeg een gameConsole toe</string>
     <string name="title_add_game">Voeg Game toe</string>
     <string name="title_add_gameconsole">Voeg gameconsole toe</string>
-    <string name="title_collections">Collecties</string>
-    <string name="title_priceCheck">Steam zoeker</string>
-    <string name="title_profile">Profiel</string>
+    <string name="No_internet_banner">Momenteel is er geen internetverbinding! Deze functie zal niet werken</string>
 
-    <!-- Radio button strings-->
+    <!-- Text for buttons-->
+    <string name="button_save">Opslaan</string>
+    <string name="button_delete_gameconsoles">GameConsoles verwijderen</string>
+    <string name="button_steam_profile_searcher">Zoek profiel</string>
 
-    <string name="title_radioButton">Selecteer de taal</string>
-    <string name="title_taal_english">Engels</string>
-    <string name="Dutch_RadioButton">Nederlands</string>
-    <string name="steamId_hint">SteamID</string>
+    <!-- Text for messages-->
+    <string name="empty_not_saved">GameConsole is niet opgeslaan wegen leegte.</string>
     <string name="error_steamProfile_empty">Laat de steamId niet leeg</string>
     <string name="Steam_profile_not_found">Speler\' s profiel niet gevonden</string>
     <string name="No_internet_connection">Geen internet verbinding</string>
@@ -33,7 +34,30 @@
     <string name="GameConsole_delete_message">Spelcomputers zijn gedelet en al hun spellen</string>
     <string name="GameConsole_field_blank">Je kan de gameConsole veld niet leeg laten</string>
     <string name="Succes_message_delete">Succesvol verwijderd</string>
-    <string name="appwidget_text">klik om te openen</string>
+
+    <!-- Text for navigation-->
+    <string name="title_activity_nav">nav</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="title_collections">Collecties</string>
+    <string name="title_games">Games</string>
+    <string name="title_priceCheck">Steam zoeker</string>
+    <string name="title_settings">Instellingen</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- Radio button strings-->
+    <string name="title_radioButton">Selecteer de taal</string>
+    <string name="title_taal_english">Engels</string>
+    <string name="Dutch_RadioButton">Nederlands</string>
+
+
+    <!-- Widget-->
     <string name="app_widget_description">Dit is om de app te openen</string>
     <string name="add_widget">Voeg widget toe</string>
+    <string name="title_notification">Wifi is uitgeschakeld!</string>
+
+
 </resources>
