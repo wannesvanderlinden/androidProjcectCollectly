@@ -43,10 +43,6 @@ class SteamProfileSearcherFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val dashboardViewModel =
-            ViewModelProvider(this).get(DashboardViewModel::class.java)
-
-
 
 
         _binding = FragmentSteamProfileSearcherBinding.inflate(inflater, container, false)

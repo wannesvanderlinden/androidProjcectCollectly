@@ -42,10 +42,6 @@ class GameConsoleFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
 
-
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentCollectionsBinding.inflate(inflater, container, false)
         val root: View = binding.root
         //Define the recyclerview
