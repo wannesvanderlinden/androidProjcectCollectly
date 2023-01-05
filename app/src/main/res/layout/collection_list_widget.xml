@@ -5,7 +5,7 @@
     android:theme="@style/Theme.AndroidProjcectCollectly.AppWidgetContainer">
 
     <TextView
-        android:id="@+id/webview"
+        android:id="@+id/date_text"
         style="@style/Widget.AndroidProjcectCollectly.AppWidget.InnerView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

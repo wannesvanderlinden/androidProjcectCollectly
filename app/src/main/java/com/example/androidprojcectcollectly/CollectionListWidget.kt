@@ -1,17 +1,19 @@
 package com.example.androidprojcectcollectly
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
-import android.content.Intent
-import android.net.Uri
 import android.widget.RemoteViews
+import android.widget.TextView
+import java.text.SimpleDateFormat
+import java.util.*
+
 
 /**
  * Implementation of App Widget functionality.
  */
 class CollectionListWidget : AppWidgetProvider() {
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -42,13 +44,12 @@ internal fun updateAppWidget(
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.collection_list_widget)
 
-    /*var intent = Intent(Intent.ACTION_VIEW)
-    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-    intent.data = Uri.parse("https://gamerant.com/gaming/")
-var pendingIntent = PendingIntent.getActivity(context,0,intent,PendingIntent.FLAG_UPDATE_CURRENT)
-*/
-    //views.setTextViewText(R.id.appwidget_button, widgetText)
-    //views.setOnClickPendingIntent(R.id.appwidget_button,pendingIntent)
+    //getting the data and format it to a specific
+    val c = Calendar.getInstance().time
+    val df = SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault())
+    val formattedDate = df.format(c)
+    views.setTextViewText(R.id.date_text,formattedDate)
+
 
         // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
