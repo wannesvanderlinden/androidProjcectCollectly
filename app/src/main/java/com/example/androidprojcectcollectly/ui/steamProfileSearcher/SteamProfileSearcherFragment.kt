@@ -7,6 +7,7 @@ import android.transition.TransitionInflater
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
@@ -52,66 +53,86 @@ class SteamProfileSearcherFragment : Fragment() {
         binding.noInternet.setVisibility(View.GONE)
 
         /**
-         * Define listner when user press the search profile button to check it is not empty
-         * and makes an api call to the steam api if it is not empty and does have internet connection
+         * Define listner when user press the search icon in the keyboard
+         * and calls the the steamProfileSearcher function
          */
-        binding.searchButton.setOnClickListener {
+        searchSteamProfile.setOnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
 
-            if (TextUtils.isEmpty(searchSteamProfile.text)) {
-                Toast.makeText(
-                    context,
-                    R.string.error_steamProfile_empty,
-                    Toast.LENGTH_LONG
-                ).show()
+                true
             } else {
-
-                //create connectivity manager to check if the device is connected to the internet
-                val connectivityManager =
-                    getSystemService(context!!, ConnectivityManager::class.java)
-                if (connectivityManager?.getNetworkCapabilities(connectivityManager?.getActiveNetwork()) != null) {
-                    //Delete the no internet banner
-                    binding.noInternet.setVisibility(View.GONE)
-                    //Get all the information of the api and put it in a bundel to show in the next fragment
-                    var steamId = searchSteamProfile.text.toString()
-                    SteamApi.getData(steamId) { profile: SteamProfile? ->
-                        if (profile != null && profile.response.players.isNotEmpty()) {
-                            val bundle = Bundle()
-                            println(profile)
-                            bundle.putString("personame", profile.response.players[0].personaname)
-                            bundle.putString(
-                                "loccountrycode",
-                                profile.response.players[0].loccountrycode
-                            )
-                            bundle.putString("steamid", profile.response.players[0].steamid)
-                            bundle.putString("avatarLink", profile.response.players[0].avatarfull)
-
-                            (activity as MainActivity).navigate(
-                                R.id.navigation_Steam_Profile,
-                                bundle
-                            )
-                        } else {
-                            Toast.makeText(
-                                context,
-                                R.string.Steam_profile_not_found,
-                                Toast.LENGTH_LONG
-                            ).show()
-                        }
-                    }
-                } else {
-                    //Add the no internet banner because it is not connected to the internet
-                    binding.noInternet.setVisibility(View.VISIBLE)
-
-                    Toast.makeText(
-                        context,
-                        R.string.No_internet_connection,
-                        Toast.LENGTH_LONG
-                    ).show()
-                }
+                steamProfileSearcher()
 
 
+                false
             }
         }
+
+
+
         return root
+    }
+
+    /**
+     * function  to check it is not empty the number edit
+     * and makes an api call to the steam api if it is not empty and does have internet connection
+     * and will navigate then to the fragment of steam profile
+     */
+    private fun steamProfileSearcher() {
+
+        if (TextUtils.isEmpty(searchSteamProfile.text)) {
+            Toast.makeText(
+                context,
+                R.string.error_steamProfile_empty,
+                Toast.LENGTH_LONG
+            ).show()
+        } else {
+
+            //create connectivity manager to check if the device is connected to the internet
+            val connectivityManager =
+                getSystemService(context!!, ConnectivityManager::class.java)
+            if (connectivityManager?.getNetworkCapabilities(connectivityManager?.getActiveNetwork()) != null) {
+                //Delete the no internet banner
+                binding.noInternet.setVisibility(View.GONE)
+                //Get all the information of the api and put it in a bundel to show in the next fragment
+                var steamId = searchSteamProfile.text.toString()
+                SteamApi.getData(steamId) { profile: SteamProfile? ->
+                    if (profile != null && profile.response.players.isNotEmpty()) {
+                        val bundle = Bundle()
+                        println(profile)
+                        bundle.putString("personame", profile.response.players[0].personaname)
+                        bundle.putString(
+                            "loccountrycode",
+                            profile.response.players[0].loccountrycode
+                        )
+                        bundle.putString("steamid", profile.response.players[0].steamid)
+                        bundle.putString("avatarLink", profile.response.players[0].avatarfull)
+
+                        (activity as MainActivity).navigate(
+                            R.id.navigation_Steam_Profile,
+                            bundle
+                        )
+                    } else {
+                        Toast.makeText(
+                            context,
+                            R.string.Steam_profile_not_found,
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
+            } else {
+                //Add the no internet banner because it is not connected to the internet
+                binding.noInternet.setVisibility(View.VISIBLE)
+
+                Toast.makeText(
+                    context,
+                    R.string.No_internet_connection,
+                    Toast.LENGTH_LONG
+                ).show()
+            }
+
+
+        }
     }
 
     override fun onDestroyView() {

@@ -14,21 +14,13 @@
         android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="@string/steamId_hint"
-        android:inputType="textPersonName"
+        android:imeOptions="actionSearch"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/search_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/button_steam_profile_searcher"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/SteamIdField" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:inputType="number"/>
 
     <TextView
         android:id="@+id/textView2"
@@ -51,6 +43,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_button" />
+        app:layout_constraintTop_toBottomOf="@+id/SteamIdField" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

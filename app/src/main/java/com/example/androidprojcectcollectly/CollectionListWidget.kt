@@ -1,8 +1,10 @@
 package com.example.androidprojcectcollectly
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
+import android.content.Intent
 import android.widget.RemoteViews
 import android.widget.TextView
 import java.text.SimpleDateFormat
@@ -40,16 +42,23 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int
 ) {
+
     val widgetText = context.getString(R.string.appwidget_text)
-    // Construct the RemoteViews object
-    val views = RemoteViews(context.packageName, R.layout.collection_list_widget)
+
 
     //getting the data and format it to a specific
     val c = Calendar.getInstance().time
     val df = SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault())
     val formattedDate = df.format(c)
-    views.setTextViewText(R.id.date_text,formattedDate)
+    val intent = Intent(context,MainActivity::class.java)
 
+    //Open app when the widget is been clicked
+    val pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+    // Construct the RemoteViews object
+    val views = RemoteViews(context.packageName, R.layout.collection_list_widget).apply {
+        setOnClickPendingIntent(R.id.date_text, pendingIntent)
+    }
+    views.setTextViewText(R.id.date_text,formattedDate)
 
         // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)

@@ -12,6 +12,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
@@ -63,6 +64,11 @@ class ProfileFragment : Fragment() {
         var gameDeleteBtn = binding.buttonDeleteGame
         var deleteGame = binding.editGameField
 
+        gameConsoleDeleteBtn.setVisibility(View.INVISIBLE)
+        gameDeleteBtn.setVisibility(View.INVISIBLE)
+        deleteGame.setVisibility(View.INVISIBLE)
+        binding.cardView.setVisibility(View.INVISIBLE)
+        binding.cardView2.setVisibility(View.INVISIBLE)
         //checking if dark mode was on and change the state of the switch
         if (this.activity?.getSharedPreferences("save", Context.MODE_PRIVATE)
                 ?.getBoolean(KEY_IS_ENABLED, false) == true
