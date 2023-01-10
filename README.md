@@ -2,7 +2,7 @@
 ## Implemeted extra features
 - When the user turn off the wifi a notification will be send to the user with broadcast reciever
 - Steam profile searcher will be disabled when there is no netwerk connectivitie and will create a banner on the fragment
-- A basic Widget is available when pressed the application will open
+- A basic Widget is available when you put it on the screen it will show the date of that day
 - Dark mode is implemented in the profile fragment and the state of the dark mode will be saved when application is exited
 - Transitions between fragments
 - When application starts the splash screen will start with animations and sound
