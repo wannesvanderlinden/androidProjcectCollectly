@@ -14,7 +14,7 @@ object SteamApi {
     fun getData(steamId: String, callback: (obj: SteamProfile?) -> Unit){
         CoroutineScope(Dispatchers.IO).launch {
             val call = getSteamApi().getSteamProfile("79342C8E8D35B857CE5C6000FA76F8A0", steamId)
-            println(call.request().url().url().toString())
+            //println(call.request().url().url().toString())
             val response = call.execute()
             withContext(Dispatchers.Main) {
                 if (response.isSuccessful) {
